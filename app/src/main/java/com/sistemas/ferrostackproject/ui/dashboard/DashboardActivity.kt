@@ -8,7 +8,11 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.sistemas.ferrostackproject.databinding.ActivityDashboardBinding
+import com.sistemas.ferrostackproject.ui.configuration.ConfigurationActivity
+import com.sistemas.ferrostackproject.ui.drawer.setupDrawerNavigation
+import com.sistemas.ferrostackproject.ui.inventory.InventoryActivity
 import com.sistemas.ferrostackproject.ui.productos.ProductActivity
+import com.sistemas.ferrostackproject.ui.reports.ReportsActivity
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -18,40 +22,37 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Inicializar View Binding
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Ajustar los márgenes por las barras del sistema
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-
-            v.setPadding(
-                systemBars.left,
-                systemBars.top,
-                systemBars.right,
-                systemBars.bottom
-            )
-
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        configurarMenu()
-        configurarNavegacion()
+        // Conectar la navegación general del menú lateral
+        setupDrawerNavigation(binding.drawerLayout)
+
+        configurarNavegacionCards()
     }
 
-    private fun configurarMenu() {
-        // Abrir el menú lateral
-        binding.btnMenu.setOnClickListener {
-            binding.drawerLayout.openDrawer(GravityCompat.START)
-        }
-    }
-
-    private fun configurarNavegacion() {
-        // Abrir la pantalla de Productos al presionar la Card
+    private fun configurarNavegacionCards() {
+        // NAVEGACIÓN DESDE LAS TARJETAS DEL DASHBOARD
         binding.cardProductos.setOnClickListener {
-            val intent = Intent(this, ProductActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ProductActivity::class.java))
+        }
+
+        binding.cardInventario?.setOnClickListener {
+            startActivity(Intent(this, InventoryActivity::class.java))
+        }
+
+        binding.cardReportes?.setOnClickListener {
+            startActivity(Intent(this, ReportsActivity::class.java))
+        }
+
+        binding.cardConfiguracion?.setOnClickListener {
+            startActivity(Intent(this, ConfigurationActivity::class.java))
         }
     }
 
