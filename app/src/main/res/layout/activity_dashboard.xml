@@ -35,7 +35,6 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/menu"
                 android:contentDescription="Abrir menú"
-
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
@@ -49,7 +48,6 @@
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
-
                 app:layout_constraintStart_toEndOf="@id/btnMenu"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -108,6 +106,7 @@
                         app:cardBackgroundColor="@android:color/white"
                         app:cardCornerRadius="18dp"
                         app:cardElevation="3dp"
+                        app:cardPreventCornerOverlap="false"
                         app:strokeColor="#E8E8E8"
                         app:strokeWidth="1dp">
 
@@ -116,7 +115,9 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="16dp"
+                            android:clickable="false"
+                            android:focusable="false">
 
                             <ImageView
                                 android:layout_width="55dp"
@@ -159,6 +160,7 @@
                         app:cardBackgroundColor="@android:color/white"
                         app:cardCornerRadius="18dp"
                         app:cardElevation="3dp"
+                        app:cardPreventCornerOverlap="false"
                         app:strokeColor="#E8E8E8"
                         app:strokeWidth="1dp">
 
@@ -167,7 +169,9 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="16dp"
+                            android:clickable="false"
+                            android:focusable="false">
 
                             <ImageView
                                 android:layout_width="55dp"
@@ -219,6 +223,7 @@
                         app:cardBackgroundColor="@android:color/white"
                         app:cardCornerRadius="18dp"
                         app:cardElevation="3dp"
+                        app:cardPreventCornerOverlap="false"
                         app:strokeColor="#E8E8E8"
                         app:strokeWidth="1dp">
 
@@ -227,7 +232,9 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="16dp"
+                            android:clickable="false"
+                            android:focusable="false">
 
                             <ImageView
                                 android:layout_width="55dp"
@@ -269,6 +276,7 @@
                         app:cardBackgroundColor="@android:color/white"
                         app:cardCornerRadius="18dp"
                         app:cardElevation="3dp"
+                        app:cardPreventCornerOverlap="false"
                         app:strokeColor="#E8E8E8"
                         app:strokeWidth="1dp">
 
@@ -277,7 +285,9 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="16dp"
+                            android:clickable="false"
+                            android:focusable="false">
 
                             <ImageView
                                 android:layout_width="55dp"
@@ -321,6 +331,5 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start" />
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -14,6 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.sistemas.ferrostackproject.R
 import com.sistemas.ferrostackproject.data.database.InventoryDatabase
 import com.sistemas.ferrostackproject.data.repository.ProductoRepository
+import com.sistemas.ferrostackproject.ui.drawer.setupDrawerNavigation
 import com.sistemas.ferrostackproject.viewmodel.ProductoViewModel
 import com.sistemas.ferrostackproject.viewmodel.ProductoViewModelFactory
 
@@ -37,10 +38,12 @@ class ProductActivity : AppCompatActivity() {
 
         // Referencias a los elementos de la interfaz
         drawerLayout = findViewById(R.id.drawerLayout)
-        val btnMenu = findViewById<ImageButton>(R.id.btnMenu)
         val btnAgregarProducto = findViewById<FloatingActionButton>(R.id.btnAgregarProducto)
         txtCantidadProductos = findViewById(R.id.txtCantidadProductos)
         recyclerProductos = findViewById(R.id.recyclerProductos)
+
+        // Configuración de la navegación lateral reutilizable (Controla el botón menú y las opciones del drawer)
+        setupDrawerNavigation(drawerLayout)
 
         // Configuración del RecyclerView y Adaptador
         adapter = ProductoAdapter()
@@ -51,11 +54,6 @@ class ProductActivity : AppCompatActivity() {
         viewModel.listaProductos.observe(this) { lista ->
             adapter.actualizarLista(lista)
             txtCantidadProductos.text = "${lista.size} productos"
-        }
-
-        // Abrir Menú Lateral al presionar el botón de la barra superior
-        btnMenu.setOnClickListener {
-            drawerLayout.openDrawer(GravityCompat.START)
         }
 
         // Navegar a la pantalla de Registro al presionar el botón flotante (+)
